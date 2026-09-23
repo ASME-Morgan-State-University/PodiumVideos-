@@ -18,11 +18,10 @@ echo "Network is ready."
 echo "[2/4] Updating videos from Git..."
 cd "$VIDEO_DIR"
 if ! git pull --ff-only; then
-	echo "Git update failed. Videos will not start." >&2
-	read -r -p "Press Enter to close this window..." || true
-	exit 1
+	echo "Git update failed. Continuing with local videos." >&2
+else
+	echo "Git update complete."
 fi
-echo "Git update complete."
 
 echo "[3/4] Finding videos..."
 mapfile -d '' videos < <(find "$VIDEO_DIR" -maxdepth 1 -type f \( \
