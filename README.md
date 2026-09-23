@@ -1,6 +1,9 @@
 # PodiumVideos-
 The pi400 Setup That Plays videos
 
+## Setting up the Video Stand
+Just Plug it in. Make sure it has wifi if you are expecting new videos.
+
 ## Raspberry Pi setup
 
 This setup expects the project and video to be located at:
