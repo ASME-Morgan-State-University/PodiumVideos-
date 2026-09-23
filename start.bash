@@ -14,4 +14,4 @@ if [[ ! -f "$video" ]]; then
 	exit 1
 fi
 
-exec mpv --fs --loop=inf --no-osd-bar "$video"
+exec mpv --fs --loop=inf --no-osd-bar --gpu-api=opengl "$video"
