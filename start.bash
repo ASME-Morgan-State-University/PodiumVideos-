@@ -6,12 +6,16 @@ set -euo pipefail
 
 
 VIDEO_DIR="/home/asmeehpv/PodiumVideos-"
-VIDEO_NAME="video0.mp4"
-video="$VIDEO_DIR/$VIDEO_NAME"
+videos=(
+	"$VIDEO_DIR/video0.mp4"
+	"$VIDEO_DIR/video1.mp4"
+)
 
-if [[ ! -f "$video" ]]; then
-	echo "Video not found: $video" >&2
-	exit 1
-fi
+for video in "${videos[@]}"; do
+	if [[ ! -f "$video" ]]; then
+		echo "Video not found: $video" >&2
+		exit 1
+	fi
+done
 
-exec mpv --fs --loop=inf --no-osd-bar --gpu-api=opengl "$video"
+exec mpv --fs --loop-playlist=inf --no-osd-bar --gpu-api=opengl "${videos[@]}"
