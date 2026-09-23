@@ -4,7 +4,8 @@
 # environment's startup applications to run it automatically on boot.
 set -euo pipefail
 
-VIDEO_DIR="/home/pi/PodiumVideos-"
+
+VIDEO_DIR="/home/asmeehpv/PodiumVideos-"
 VIDEO_NAME="video0.mp4"
 video="$VIDEO_DIR/$VIDEO_NAME"
 

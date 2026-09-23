@@ -6,8 +6,8 @@ The pi400 Setup That Plays videos
 This setup expects the project and video to be located at:
 
 ```text
-/home/pi/PodiumVideos-/start.bash
-/home/pi/PodiumVideos-/video0.mp4
+/home/asmeehpv/PodiumVideos-/start.bash
+/home/asmeehpv/PodiumVideos-/video0.mp4
 ```
 
 Install `mpv`, make the startup script executable, and create a desktop
@@ -16,14 +16,14 @@ autostart entry:
 ```bash
 sudo apt update
 sudo apt install -y mpv
-chmod +x /home/pi/PodiumVideos-/start.bash
+chmod +x /home/asmeehpv/PodiumVideos-/start.bash
 
-mkdir -p /home/pi/.config/autostart
-cat > /home/pi/.config/autostart/podium-videos.desktop <<'EOF'
+mkdir -p /home/asmeehpv/.config/autostart
+cat > /home/asmeehpv/.config/autostart/podium-videos.desktop <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Podium Videos
-Exec=/home/pi/PodiumVideos-/start.bash
+Exec=/home/asmeehpv/PodiumVideos-/start.bash
 Terminal=false
 EOF
 ```
