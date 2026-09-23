@@ -25,9 +25,11 @@ cat > /home/asmeehpv/.config/autostart/podium-videos.desktop <<'EOF'
 Type=Application
 Name=Podium Videos
 Exec=/home/asmeehpv/PodiumVideos-/start.bash
-Terminal=false
+Terminal=true
 EOF
 ```
 
-Restart the Pi or log out and back in. The desktop session will play `video0.mp4`,
-then `video1.mp4`, fullscreen, and repeat that sequence continuously.
+Restart the Pi or log out and back in. The terminal window will show the Git
+update and startup stages, then the desktop session will play all video files
+fullscreen in filename order and repeat them continuously. Add new videos to
+`/home/asmeehpv/PodiumVideos-` and they will be included after the next Git pull.
