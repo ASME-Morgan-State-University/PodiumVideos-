@@ -7,7 +7,15 @@ set -euo pipefail
 
 VIDEO_DIR="/home/asmeehpv/PodiumVideos-"
 
-echo "[1/3] Updating videos from Git..."
+echo "[1/4] Waiting for Wi-Fi and network..."
+while ! getent hosts github.com >/dev/null 2>&1; do
+	printf "."
+	sleep 2
+done
+echo
+echo "Network is ready."
+
+echo "[2/4] Updating videos from Git..."
 cd "$VIDEO_DIR"
 if ! git pull --ff-only; then
 	echo "Git update failed. Videos will not start." >&2
@@ -16,7 +24,7 @@ if ! git pull --ff-only; then
 fi
 echo "Git update complete."
 
-echo "[2/3] Finding videos..."
+echo "[3/4] Finding videos..."
 mapfile -d '' videos < <(find "$VIDEO_DIR" -maxdepth 1 -type f \( \
 	-iname '*.mp4' -o -iname '*.mkv' -o -iname '*.webm' -o -iname '*.avi' \
 	-o -iname '*.mov' -o -iname '*.m4v' \
@@ -28,5 +36,5 @@ if [[ ${#videos[@]} -eq 0 ]]; then
 	exit 1
 fi
 
-echo "[3/3] Starting ${#videos[@]} video(s) in a loop..."
+echo "[4/4] Starting ${#videos[@]} video(s) in a loop..."
 exec mpv --fs --loop-playlist=inf --no-osd-bar --gpu-api=opengl "${videos[@]}"
